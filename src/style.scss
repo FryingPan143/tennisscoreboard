@@ -1,0 +1,154 @@
+body{
+    display: grid;
+    justify-content: center;
+    
+    h1{
+        text-align: center;
+        text-shadow: 2px 2px #000000;
+        color:white;
+    }
+    
+    background-image: url('./wall.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100vh;
+}
+
+.scoreboard{
+    background-color: rgb(52, 150, 52);
+    width:750px;
+    height:40vh;
+    border: 3px solid black;
+    border-radius: 25px;
+    margin-top: 10vh;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    box-shadow: 5px 10px;
+    
+    .p1{
+        grid-column: 1;
+        grid-template-columns: 1fr 1fr;
+
+        .set-box{
+            margin-left:10px;
+            margin-top: 10px;
+        }
+     
+        .score-box{
+            margin-left:10px;
+            margin-top: 10px;
+        }
+
+        .addBtn{
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    .p2{
+        grid-column: 4;
+        grid-template-columns: 1fr 1fr;
+        
+        .set-box{
+            grid-column: 1;
+            grid-row: 1;
+            margin-right:10px;
+            margin-top: 10px;
+       
+            .score-points{
+                margin-top: -10px;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+        .score-box{
+            grid-column: 2;
+            margin-right:10px;
+            margin-top: 10px;
+        }
+        .addBtn{
+            grid-column: 2;
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+    }
+    .p-side{
+        display: grid;
+        
+        .set-box{
+            text-align: center;
+            border:2px solid black;
+            border-radius: 15px;
+            background-color: white;
+            height:15vh;
+            width:6vw;
+                        
+            .score-points{
+                margin-top: -10px;
+                font-size: 2em;
+                font-weight: bold;
+            }
+        }
+        .score-box{
+            text-align: center;
+            border:2px solid black;
+            border-radius: 15px;
+            background-color: white;
+            height:20vh;
+            width:150px;
+            
+            .score-points{
+                text-align: center;
+                font-size: 2em;
+                font-weight: bold;
+                margin:0;
+                
+            }
+            .term{
+                margin:0;
+            }
+        }
+
+        .addBtn{
+            width:100px;
+            height:30px;
+            border:2px solid black;
+            border-radius: 5px;
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(187, 187, 187);
+            }
+        }
+    }
+
+    .result{
+        grid-column: 2/4;
+        text-align: center;
+        font-weight: bold;
+        color:white;
+        text-shadow: 2px 2px #000000;
+        
+        .restart{
+            display: none;
+            color:palegoldenrod;
+            &:hover{
+                cursor: pointer;
+                color:yellow;
+            }
+        }
+    }
+
+
+
+}
+
+
+.status{
+    margin-top: -5px;
+    font-size: 2em;
+    
+}
+
+.winner{
+    margin:0;
+}
