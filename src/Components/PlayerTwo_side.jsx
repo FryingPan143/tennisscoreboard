@@ -12,19 +12,26 @@ export default function PlayerTwo_side() {
         }
     }
 
-    function scoring() {
-        if (p2_score >= 4 && p2_score >= p1_score + 2) {
+    function scoring(score, set) {
+        if (p2_sets == 7) {
+            endGame();
+        }
+        if (p2_score >= score && p2_score >= p1_score + 2) {
             setP2_score(0);
             setP2_sets(p2_sets + 1)
             setP1_score(0);
         }
-        if (p2_sets >= 6 && p2_sets >= p1_sets + 2) {
-            let winner = document.querySelector('.winner');
-            winner.innerHTML = "Player 2 Wins";
-            let restart = document.querySelector('.restart');
-            restart.style.display = "block";
-            setGameOver(true);
+        if (p2_sets >= set && p2_sets >= p1_sets + 2) {
+            endGame();
         }
+    }
+
+    function endGame() {
+        let winner = document.querySelector('.winner');
+        winner.innerHTML = "Player 2 Wins";
+        let restart = document.querySelector('.restart');
+        restart.style.display = "block";
+        setGameOver(true);
     }
 
     function pointDisplay() {
@@ -55,7 +62,15 @@ export default function PlayerTwo_side() {
 
     useEffect(() => {
         pointDisplay();
-        scoring();
+        //räknar score vid tie break
+        if (p2_sets == p1_sets && p2_sets == 6) {
+            scoring(7, 6);
+            console.log("tiebreak");
+        }
+        //räknar score vid ett vanligt game
+        else {
+            scoring(4, 6);
+        }
     })
 
     return (

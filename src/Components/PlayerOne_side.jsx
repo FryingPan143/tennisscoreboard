@@ -12,24 +12,36 @@ export default function PlayerOne_side() {
         }
     }
 
-
-    function scoring() {
-        if (p1_score >= 4 && p1_score >= p2_score + 2) {
+    //här skickar jag in score och set som parameter, beroende på om det är tiebreaker set, eller vanligt game
+    function scoring(score, set) {
+        //vid eventuell tiebreaker
+        if (p1_sets == 7) {
+            endGame();
+        }
+        if (p1_score >= score && p1_score >= p2_score + 2) {
             setP1_score(0);
             setP1_sets(p1_sets + 1)
             setP2_score(0);
         }
-        if (p1_sets >= 6 && p1_sets >= p2_sets + 2) {
-            let winner = document.querySelector('.winner');
-            winner.innerHTML = "Player 1 Wins";
-            let restart = document.querySelector('.restart');
-            restart.style.display = "block";
-            setGameOver(true);
+        if (p1_sets >= set && p1_sets >= p2_sets + 2) {
+            endGame();
+            console.log("ending")
         }
     }
 
 
+
+    function endGame() {
+        //funktion för att avsluta spelet och deklarera vinnaren
+        let winner = document.querySelector('.winner');
+        winner.innerHTML = "Player 1 Wins";
+        let restart = document.querySelector('.restart');
+        restart.style.display = "block";
+        setGameOver(true);
+    }
+
     function pointDisplay() {
+        //sätter de olika termerna baserat på vilken poäng man har
         switch (p1_score) {
             case 0:
                 setTerm("Love");
@@ -57,7 +69,14 @@ export default function PlayerOne_side() {
 
     useEffect(() => {
         pointDisplay();
-        scoring();
+        //räknar score vid tie break
+        if (p1_sets == p2_sets && p1_sets == 6) {
+            scoring(7, 6);
+        }
+        //räknar score vid ett vanligt game
+        else {
+            scoring(4, 6);
+        }
     });
 
     return (

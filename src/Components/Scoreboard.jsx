@@ -19,7 +19,7 @@ export default function Scoreboard() {
                 value={{
                     p1_score, setP1_score, p2_score, setP2_score,
                     p1_sets, setP1_sets, p2_sets, setP2_sets,
-                    gameOver, setGameOver, winner, setWinner
+                    gameOver, setGameOver, winner, setWinner,
                 }}>
                 <PlayerOne_side />
                 <PlayerTwo_side />
