@@ -29,8 +29,6 @@ export default function PlayerOne_side() {
         }
     }
 
-
-
     function endGame() {
         //funktion för att avsluta spelet och deklarera vinnaren
         let winner = document.querySelector('.winner');
